@@ -84,27 +84,64 @@
                         <viewLayoutGuide key="safeArea" id="fjE-qn-K9V"/>
                     </view>
                     <navigationItem key="navigationItem" id="jY3-8K-gtG">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="K8k-A3-dhn"/>
+                        <barButtonItem key="rightBarButtonItem" title="+" id="K8k-A3-dhn">
+                            <connections>
+                                <segue destination="Mpi-iY-VFK" kind="presentation" id="yLs-k5-f4k"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGI-up-sA0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1792.753623188406" y="146.65178571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="CKe-d6-jLM">
             <objects>
-                <viewController id="Mpi-iY-VFK" sceneMemberID="viewController">
+                <viewController id="Mpi-iY-VFK" customClass="CameraViewController" customModule="Parstagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Me9-bw-QQj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Z1z-hP-WcD">
+                                <rect key="frame" x="0.0" y="71" width="394" height="318"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="16N-ai-hC2" appends="YES" id="gbA-L4-B23"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2sj-uF-fso">
+                                <rect key="frame" x="31" y="427" width="326" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfh-bW-CMX">
+                                <rect key="frame" x="56" y="528" width="301" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="onSubmit:" destination="Mpi-iY-VFK" eventType="touchUpInside" id="FaD-cz-URe"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CPS-UN-x28"/>
                     </view>
+                    <connections>
+                        <outlet property="commentField" destination="2sj-uF-fso" id="6YK-MG-EsN"/>
+                        <outlet property="imageView" destination="Z1z-hP-WcD" id="KSq-sI-sQw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9NT-o2-z5S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="16N-ai-hC2">
+                    <connections>
+                        <action selector="onCameraButton:" destination="Mpi-iY-VFK" id="Q9m-kS-dde"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2622" y="157"/>
+            <point key="canvasLocation" x="2621.739130434783" y="156.69642857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vxg-N7-jX4">
@@ -125,4 +162,7 @@
             <point key="canvasLocation" x="882.60869565217399" y="146.65178571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="image_placeholder" width="375" height="375"/>
+    </resources>
 </document>
