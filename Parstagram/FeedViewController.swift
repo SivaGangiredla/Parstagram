@@ -25,8 +25,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func onLogoutButton(_ sender: Any) {
+        PFUser.logOut()
+        
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        
+        let loginViewController = main.instantiateViewController(identifier: "LoginViewController")
+        
+        let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+        sceneDelegate.window?.rootViewController = loginViewController
+        
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0;
+        return posts.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
